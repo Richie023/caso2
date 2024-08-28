@@ -21,12 +21,12 @@ function RegistrarAlquiler($IdCasa, $UsuarioAlquiler, $FechaAlquiler) {
     $conexion = AbrirBaseDatos();
     $sentencia = "CALL RegistrarAlquiler('$IdCasa', '$UsuarioAlquiler', '$FechaAlquiler')";
     $respuesta = $conexion->query($sentencia);
-
+    
     if ($conexion->error) {
         // Mostrar mensaje de error si hay problemas con la consulta
         echo "Error en la consulta: " . $conexion->error;
     }
-
+    
     CerrarBaseDatos($conexion);
     return $respuesta;
 }
