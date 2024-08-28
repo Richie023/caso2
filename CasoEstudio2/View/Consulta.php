@@ -5,6 +5,7 @@ include_once '../Controller/CasasController.php';
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@ include_once '../Controller/CasasController.php';
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700">
 </head>
+
 <body>
     <?php 
     MostrarNav();
@@ -45,4 +47,5 @@ include_once '../Controller/CasasController.php';
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="dist/js/adminlte.min.js"></script> <!-- Verifica que esta ruta sea correcta -->
 </body>
+
 </html>
