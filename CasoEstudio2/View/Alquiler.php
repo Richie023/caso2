@@ -1,11 +1,21 @@
 <?php 
 include_once 'layoutInterno.php';
 include_once '../Controller/CasasController.php';
+include_once '../Controller/Alquiler.Controller.php'
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+    <style>
+    .centered-div {
+        width: 300px;
+        margin: 0 auto;
+
+    }
+    </style>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alquiler de Casas</title>
@@ -15,52 +25,42 @@ include_once '../Controller/CasasController.php';
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700">
 </head>
+
 <body>
     <?php 
     MostrarNav();
     MostrarMenu();
     ?>
-      <form action="Alquiler.php" method="POST">
-        <label for="IdCasa">Seleccione la Casa:</label>
-        <select name="IdCasa" id="IdCasa" onchange="actualizarPrecio()">
-            <?php mostrarCasasDisponibles(); ?>
-        </select><br>
 
-        <label for="PrecioCasa">Precio Mensual:</label>
-        <input type="text" name="PrecioCasa" id="PrecioCasa" readonly><br>
+    <div class="centered-div">
 
-        <label for="UsuarioAlquiler">Su Nombre:</label>
-        <input type="text" name="UsuarioAlquiler" id="UsuarioAlquiler" required><br>
+        <div>
+            <h1 class="mb-4">Alquiler de Casas</h1>
+            <div />
 
-        <input type="submit" value="Alquilar Casa">
-    </form>
+            <form action="Alquiler.php" method="POST">
+                <label for="IdCasa">Seleccione_Casa:</label>
+                <select name="IdCasa" id="IdCasa" onchange="actualizarPrecio()">
+                    <?php mostrarCasasDisponibles(); ?>
+                </select><br>
 
-    <script>
-        // Función para actualizar el precio de la casa seleccionada
-        function actualizarPrecio() {
-            var idCasa = document.getElementById("IdCasa").value;
-            if (idCasa) {
-                // Llamada AJAX para obtener el precio de la casa seleccionada
-                var xhr = new XMLHttpRequest();
-                xhr.open("GET", "obtenerPrecio.php?IdCasa=" + idCasa, true);
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        document.getElementById("PrecioCasa").value = xhr.responseText;
-                    }
-                };
-                xhr.send();
-            } else {
-                document.getElementById("PrecioCasa").value = "";
-            }
-        }
-    </script>
+                <label for="precioCasa">Precio_alquiler_Casa (Mensual):</label>
+                <select id="Preciocasas" name="Preciocasas" onchange="actualizarPrecio()">
+
+                    <option value="1" disabled>$190000.00</option>
+                    <option value="2" disabled>$145000.00</option>
+                    <option value="3" disabled>$115000.00</option>
+                    <option value="4" disabled>$122000.00</option>
+                    <option value="5" disabled>$105000.00</option>
+                </select>
+
+                <br>
+                <label for="UsuarioAlquiler">Nombre :</label><br>
+                <input type="text" name="UsuarioAlquiler" id="UsuarioAlquiler" required>
+                <br>
+                <br><input type="submit" style="background-color: blue; color: black;" value="Alquilar Casa"><br>
+            </form>
+            <div />
 </body>
-</html>
 
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="dist/js/adminlte.min.js"></script> <!-- Verifica que esta ruta sea correcta -->
-</body>
 </html>
